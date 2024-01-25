@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><button>Adicionar venda</button></li>
+                <li><a href="https://kaidowriter.netlify.app/">Editor de imagens</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Rastreamento</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="container-card">
+                <h1>Custo total</h1>
+                <p class="num" id="custoTotal"></p>
+            </div>
+            <div class="container-card">
+                <h1>Total de vendas</h1>
+                <p class="num" id="vendaTotal"></p>
+            </div>
+            <div class="container-card">
+                <h1>Lucro</h1>
+                <p class="num" id="lucroTotal"></p>
+            </div>
+            <div class="container-card">
+                <h1>Miniaturas vendidas</h1>
+                <p class="num" id="vendidasTotal"></p>
+            </div>
+        </div>
+
+        <div class="container-secundario">
+            <div class="container-secundario-card">
+                <h1> Vendas recentes</h1>
+                <table>
+                    <tr>
+                        <th>Miniatura</th>
+                        <th>Comprador</th>
+                        <th>Valor</th>
+                    </tr>
+                    <tr>
+                        <td>Exemplo 1</td>
+                        <td>Vinícius Oliveira</td>
+                        <td>R$ 187,00</td>
+                    </tr>
+                    <tr>
+                        <td>Exemplo 2</td>
+                        <td>Vitor Rocha</td>
+                        <td>R$ 150,00</td>
+                    </tr>
+                    <tr>
+                        <td>Exemplo 3</td>
+                        <td>Miguel Gomes</td>
+                        <td>R$ 200,00</td>
+                    </tr>
+                    <tr>
+                        <td>Exemplo 4</td>
+                        <td>Laura Costa</td>
+                        <td>R$ 180,00</td>
+                    </tr>
+                    <tr>
+                        <td>Exemplo 5</td>
+                        <td>Rafaela Oliveira</td>
+                        <td>R$ 140,00</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="container-secundario-card">
+                <h1>Mais vendidos</h1>
+                <table>
+                    <tr>
+                        <th>Miniatura</th>
+                        <th>Quantidade</th>
+                    </tr>
+                    <tr>
+                        <td>Miniatura Exemplo 4</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Miniatura Exemplo 5</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Miniatura Exemplo 3</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>Miniatura Exemplo 9</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>Miniatura Exemplo 8</td>
+                        <td>6</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+
+    <!-- <script src="server.js"></script> -->
+    <script src="databaseexemplo.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

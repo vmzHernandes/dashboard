@@ -1,0 +1,96 @@
+body {
+    font-family: "Quicksand", sans-serif;
+    color: #c4c4c4;
+    background-color: #1d1d1d;
+    max-width: 90%;
+    margin: 0 auto;
+    overflow-y: hidden;
+    text-transform: uppercase;
+}
+
+/* Header */
+
+nav {
+    border-radius: 0.9rem;
+    background-color: #0c0c0c;
+    margin: 2rem 0;
+}
+
+nav ul {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+    list-style-type: none;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #c4c4c4;
+    text-transform: uppercase;
+}
+
+/* Main */
+
+.container {
+    display: grid;
+    grid-template: 250px / repeat(4, 1fr);
+    grid-gap: 2rem;
+    margin: 2rem 0;
+}
+
+.container-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #0c0c0c;
+    border-radius: 0.9rem;
+}
+
+.container-card h1, .container-card p {
+    margin: 0;
+}
+
+.num {
+    font-size: 2.5rem;
+}
+
+/* Secundário */
+
+.container-secundario {
+    display: grid;
+    grid-template: 450px / repeat(2, 1fr);
+    grid-gap: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.container-secundario-card {
+    background-color: #0c0c0c;
+    border-radius: 0.9rem;
+}
+
+.container-secundario-card h1 {
+    padding-bottom: 1rem;
+}
+
+table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+tr, td {
+    border-bottom: 1px solid #c4c4c4;
+    padding: 1.25rem;
+}
