@@ -14,15 +14,36 @@
     <header>
         <nav>
             <ul>
-                <li><button>Adicionar venda</button></li>
+                <li><button id="adicionarVenda">Adicionar venda</button></li>
                 <li><a href="https://kaidowriter.netlify.app/">Editor de imagens</a></li>
-                <li><a href="#">Dashboard</a></li>
                 <li><a href="#">Rastreamento</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        <form id="form">
+            <label for="id">ID</label><br>
+            <input type="text" id="id" name="id" required>
+
+            <label for="marcaMiniatura">Marca da Miniatura</label><br>
+            <input type="text" id="marcaMiniaturaForm" name="marcaMiniaturaForm" required>
+
+            <label for="marcaCarro">Marca do Carro</label><br>
+            <input type="text" id="marcaCarroForm" name="marcaCarro" required>
+
+            <label for="quantidade">Quantidade</label><br>
+            <input type="text" id="qtdForm" name="quantidade" required>
+
+            <label for="custo">Custo</label><br>
+            <input type="text" id="custoForm" name="custo" required>
+
+            <label for="venda">Venda</label><br>
+            <input type="text" id="vendaForm" name="venda" required>
+
+            <button type="submit">Adicionar </button> 
+        </form>
+
         <div class="container">
             <div class="container-card">
                 <h1>Custo total</h1>
@@ -117,8 +138,7 @@
 
 
 
-    <!-- <script src="server.js"></script> -->
-    <script src="databaseexemplo.js"></script>
-    <script src="script.js"></script>
+    <script src="databaseexemplo.js" type="module"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>

@@ -93,6 +93,39 @@ let contadorVendidas = setInterval(function() {
     }
 }, duracaoVendidas);
 
-// ********** ATUALIZAR TABELA DE VENDAS **********
+// ********** ESCONDER/MOSTRAR FORM **********
+
+let addVendaBtn = document.getElementById('adicionarVenda');
+addVendaBtn.addEventListener('click', function() {
+    let form = document.getElementById('form');
+    if (form.style.display === 'none') {
+        form.style.display = 'flex';
+    } else {
+        form.style.display = 'none'; 
+    }
+});
+
+// ********** CRIAR OBJETO NA DB **********
+
+import {vendas, adicionarProduto} from './databaseexemplo.js'
+
+let submitForm = document.getElementById('form');
+submitForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    function criarVendaObjeto() {
+        let vendaObjeto = {
+            id: document.getElementById('id').value,
+            marcaMiniatura: document.getElementById('marcaMiniaturaForm').value,
+            marcaCarro: document.getElementById('marcaCarroForm').value,
+            quantidade: Number(document.getElementById('qtdForm').value),
+            custo: Number(document.getElementById('custoForm').value),
+            venda: Number(document.getElementById('vendaForm').value)
+        };
+        return vendaObjeto;
+    }
+    let novaVendaObjeto = criarVendaObjeto();
+    adicionarProduto(novaVendaObjeto);
+    console.log('vendaObjeto criada: ', novaVendaObjeto);
+});
 
 

@@ -1,5 +1,5 @@
-var vendas = {
-    miniatura_exeplo_1: {
+var vendas =  JSON.parse(localStorage.getItem('vendas')) || {
+    miniatura_exemplo_1: {
         id: 'miniatura_exemplo_1',
         marcaMiniatura: 'marca_exemplo_1',
         marcaCarro: 'nissan',
@@ -7,7 +7,7 @@ var vendas = {
         custo: 200.50,
         venda: 280,
     },
-    miniatura_exeplo_2: {
+    miniatura_exemplo_2: {
         id: 'miniatura_exemplo_2',
         marcaMiniatura: 'marca_exemplo_1',
         marcaCarro: 'nissan',
@@ -15,7 +15,7 @@ var vendas = {
         custo: 650.98,
         venda: 800,
     },
-    miniatura_exeplo_3: {
+    miniatura_exemplo_3: {
         id: 'miniatura_exemplo_3',
         marcaMiniatura: 'marca_exemplo_1',
         marcaCarro: 'datsun',
@@ -23,7 +23,7 @@ var vendas = {
         custo: 1000.52,
         venda: 1455,
     },
-    miniatura_exeplo_4: {
+    miniatura_exemplo_4: {
         id: 'miniatura_exemplo_4',
         marcaMiniatura: 'marca_exemplo_2',
         marcaCarro: 'datsun',
@@ -31,7 +31,7 @@ var vendas = {
         custo: 2300.12,
         venda: 2800,
     },
-    miniatura_exeplo_5: {
+    miniatura_exemplo_5: {
         id: 'miniatura_exemplo_5',
         marcaMiniatura: 'marca_exemplo_2',
         marcaCarro: 'chevrolet',
@@ -39,7 +39,7 @@ var vendas = {
         custo: 1500.74,
         venda: 1800,
     },
-    miniatura_exeplo_6: {
+    miniatura_exemplo_6: {
         id: 'miniatura_exemplo_6',
         marcaMiniatura: 'marca_exemplo_3',
         marcaCarro: 'chevrolet',
@@ -47,7 +47,7 @@ var vendas = {
         custo: 750.74,
         venda: 1000,
     },
-    miniatura_exeplo_7: {
+    miniatura_exemplo_7: {
         id: 'miniatura_exemplo_7',
         marcaMiniatura: 'marca_exemplo_4',
         marcaCarro: 'chevrolet',
@@ -55,7 +55,7 @@ var vendas = {
         custo: 645.64,
         venda: 800,
     },
-    miniatura_exeplo_8: {
+    miniatura_exemplo_8: {
         id: 'miniatura_exemplo_8',
         marcaMiniatura: 'marca_exemplo_4',
         marcaCarro: 'chevrolet',
@@ -63,7 +63,7 @@ var vendas = {
         custo: 423.55,
         venda: 560,
     },
-    miniatura_exeplo_9: {
+    miniatura_exemplo_9: {
         id: 'miniatura_exemplo_9',
         marcaMiniatura: 'marca_exemplo_4',
         marcaCarro: 'chevrolet',
@@ -71,4 +71,15 @@ var vendas = {
         custo: 745.65,
         venda: 1145,
     }
+}
+
+export {vendas, adicionarProduto, vendasJSON};
+
+function adicionarProduto(produto) {
+    vendas[produto.id] = produto;
+    console.log('Objeto vendas modificado')
+}
+
+function vendasJSON() {
+    localStorage.setItem('vendas', JSON.stringify(vendas));
 }
