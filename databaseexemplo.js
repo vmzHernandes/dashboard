@@ -1,4 +1,4 @@
-var vendas =  JSON.parse(localStorage.getItem('vendas')) || {
+var vendas = {
     miniatura_exemplo_1: {
         id: 'miniatura_exemplo_1',
         marcaMiniatura: 'marca_exemplo_1',
@@ -71,15 +71,4 @@ var vendas =  JSON.parse(localStorage.getItem('vendas')) || {
         custo: 745.65,
         venda: 1145,
     }
-}
-
-export {vendas, adicionarProduto, vendasJSON};
-
-function adicionarProduto(produto) {
-    vendas[produto.id] = produto;
-    console.log('Objeto vendas modificado')
-}
-
-function vendasJSON() {
-    localStorage.setItem('vendas', JSON.stringify(vendas));
 }

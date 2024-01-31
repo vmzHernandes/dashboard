@@ -105,27 +105,54 @@ addVendaBtn.addEventListener('click', function() {
     }
 });
 
-// ********** CRIAR OBJETO NA DB **********
+// ********** FIREBASE **********
 
-import {vendas, adicionarProduto} from './databaseexemplo.js'
+// import { initializeApp } from 'firebase/app.js'
+// import { getDatabase } from "firebase/database.js";
 
-let submitForm = document.getElementById('form');
-submitForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    function criarVendaObjeto() {
-        let vendaObjeto = {
-            id: document.getElementById('id').value,
-            marcaMiniatura: document.getElementById('marcaMiniaturaForm').value,
-            marcaCarro: document.getElementById('marcaCarroForm').value,
-            quantidade: Number(document.getElementById('qtdForm').value),
-            custo: Number(document.getElementById('custoForm').value),
-            venda: Number(document.getElementById('vendaForm').value)
-        };
-        return vendaObjeto;
-    }
-    let novaVendaObjeto = criarVendaObjeto();
-    adicionarProduto(novaVendaObjeto);
-    console.log('vendaObjeto criada: ', novaVendaObjeto);
-});
+// const firebaseConfig = {
+//     apiKey: "AIzaSyAy7BrMBJ2Ff6_4MIx-S23Wt2sdqVfq_zY",
+//     authDomain: "vendas-teste-de836.firebaseapp.com",
+//     databaseURL: "https://vendas-teste-de836-default-rtdb.firebaseio.com",
+//     projectId: "vendas-teste-de836",
+//     storageBucket: "vendas-teste-de836.appspot.com",
+//     messagingSenderId: "117985085682",
+//     appId: "1:117985085682:web:caa908f518b2b4cc56a86b"
+// };
 
+// // Inicia firebase
+// const app = firebase.initializeApp(firebaseConfig);
+// const firebaseDb = getDatabase(app);
 
+// // Referencia a db
+// var formDb = firebase.database().ref('vendas-teste')
+
+// document.getElementById('form').addEventListener('submit', submitForm);
+
+// function submitForm(e) {
+//     e.preventDefault();
+//     var idMini = getElementVal('id');
+//     var marcaMiniForm =  getElementVal('marcaMiniaturaForm');
+//     var marcaCarroForm =  getElementVal('marcaCarroForm');
+//     var qtdForm =  getElementVal('qtdForm');
+//     var custoForm =  getElementVal('custoForm');
+//     var vendaForm =  getElementVal('vendaForm');
+    
+//     saveObject(idMini, marcaMiniForm, marcaCarroForm, qtdForm, custoForm, vendaForm);
+// }
+
+// const saveObject = (idMini, marcaMiniForm, marcaCarroForm, qtdForm, custoForm, vendaForm) => {
+//     var newForm = formDb.push();
+//     newForm.set({
+//         idMini: idMini,
+//         marcaMiniForm: marcaMiniForm,
+//         marcaCarroForm: marcaCarroForm,
+//         qtdForm: qtdForm,
+//         custoForm: custoForm,
+//         vendaForm: vendaForm,
+//     });
+// };
+
+// const getElementVal = (id) => {
+//     return document.getElementById(id).value;
+// }
