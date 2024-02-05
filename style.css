@@ -39,6 +39,10 @@ form {
     display: none;
 }
 
+small {
+    display: none;
+}
+
 /* Main */
 
 .container {

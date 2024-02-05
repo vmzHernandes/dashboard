@@ -93,66 +93,58 @@ let contadorVendidas = setInterval(function() {
     }
 }, duracaoVendidas);
 
-// ********** ESCONDER/MOSTRAR FORM **********
+// ********** CONTROLE DO FORMULÁRIO **********
 
-let addVendaBtn = document.getElementById('adicionarVenda');
-addVendaBtn.addEventListener('click', function() {
+// Fazer aparecer/sumir
+let label = document.querySelectorAll('form label');
+let addVendaBtnNav = document.getElementById('adicionarVenda');
+let addVendaBtnForm = document.getElementById('submit');
+
+
+addVendaBtnNav.addEventListener('click', function() {
     let form = document.getElementById('form');
     if (form.style.display === 'none') {
+        // Muda texto no menu de navegação
+        addVendaBtnNav.textContent = 'FECHAR'
+
+        // Estilização do form e labels
         form.style.display = 'flex';
+        form.style.justifyContent = 'space-around';
+        form.style.padding = '1rem';
+        form.style.paddingBottom = '0';
+        for (let i = 0; i < label.length; i++) {
+            label[i].style.display = 'flex';
+            label[i].style.alignItems = 'center';
+            label[i].style.fontSize = '1.25rem'
+        }
+
+        // Estilização do botão de adicionar venda
+        addVendaBtnForm.style.background = 'transparent'
+        addVendaBtnForm.style.color = '#c4c4c4'
+        addVendaBtnForm.style.border = 'none'
+        addVendaBtnForm.style.borderBottom = '1px solid #c4c4c4'
+        addVendaBtnForm.style.cursor = 'pointer'
+        addVendaBtnForm.style.fontSize = '1.25rem'
+        addVendaBtnForm.style.textTransform = 'uppercase'
+
     } else {
         form.style.display = 'none'; 
+        addVendaBtn.textContent = 'ADICIONAR VENDA'
+        small.style.display = 'none';
     }
 });
 
-// ********** FIREBASE **********
-
-// import { initializeApp } from 'firebase/app.js'
-// import { getDatabase } from "firebase/database.js";
-
-// const firebaseConfig = {
-//     apiKey: "AIzaSyAy7BrMBJ2Ff6_4MIx-S23Wt2sdqVfq_zY",
-//     authDomain: "vendas-teste-de836.firebaseapp.com",
-//     databaseURL: "https://vendas-teste-de836-default-rtdb.firebaseio.com",
-//     projectId: "vendas-teste-de836",
-//     storageBucket: "vendas-teste-de836.appspot.com",
-//     messagingSenderId: "117985085682",
-//     appId: "1:117985085682:web:caa908f518b2b4cc56a86b"
-// };
-
-// // Inicia firebase
-// const app = firebase.initializeApp(firebaseConfig);
-// const firebaseDb = getDatabase(app);
-
-// // Referencia a db
-// var formDb = firebase.database().ref('vendas-teste')
-
-// document.getElementById('form').addEventListener('submit', submitForm);
-
-// function submitForm(e) {
-//     e.preventDefault();
-//     var idMini = getElementVal('id');
-//     var marcaMiniForm =  getElementVal('marcaMiniaturaForm');
-//     var marcaCarroForm =  getElementVal('marcaCarroForm');
-//     var qtdForm =  getElementVal('qtdForm');
-//     var custoForm =  getElementVal('custoForm');
-//     var vendaForm =  getElementVal('vendaForm');
-    
-//     saveObject(idMini, marcaMiniForm, marcaCarroForm, qtdForm, custoForm, vendaForm);
-// }
-
-// const saveObject = (idMini, marcaMiniForm, marcaCarroForm, qtdForm, custoForm, vendaForm) => {
-//     var newForm = formDb.push();
-//     newForm.set({
-//         idMini: idMini,
-//         marcaMiniForm: marcaMiniForm,
-//         marcaCarroForm: marcaCarroForm,
-//         qtdForm: qtdForm,
-//         custoForm: custoForm,
-//         vendaForm: vendaForm,
-//     });
-// };
-
-// const getElementVal = (id) => {
-//     return document.getElementById(id).value;
-// }
+// Texto de venda adicionada
+let small = document.getElementById('small');
+let submit = document.getElementById('submit');
+submit.addEventListener('click', function() {
+    if (form.style.display === 'none') {
+        small.style.display = 'none';
+    } else {
+        small.style.display = 'flex';
+        small.style.color = 'green'
+        small.style.justifyContent = 'center'
+        small.style.paddingTop = '1.5rem'
+        small.style.fontSize = '1rem'
+    }
+})

@@ -79,5 +79,5 @@ document.getElementById('submit').addEventListener('click', function(e) {
         custo: document.getElementById('custoForm').value,
         venda: document.getElementById('vendaForm').value
     });
-    alert('deu bom')
+    // alert('deu bom');
 })
