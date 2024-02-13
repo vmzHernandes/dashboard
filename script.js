@@ -1,5 +1,5 @@
-// ********** ANIMAÇÃO DOS NÚMEROS **********
-// Custo
+// // ********** ANIMAÇÃO DOS NÚMEROS **********
+// // Custo
 // let custoTotal = document.getElementById('custoTotal');
 // let intervaloCusto = 500;
 // let numFinalCusto = somaCusto.toFixed(2);
