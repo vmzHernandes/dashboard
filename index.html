@@ -131,10 +131,11 @@
     </main>
 
 
-    <!-- Script firebase -->
+    <!-- Script firestore -->
     <script type="module">
+        // *********** FIRESTORE *************
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
-        import { getDatabase, ref, set, get, child, } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+        import { getFirestore, setDoc, addDoc, getDocs, doc, collection } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAy7BrMBJ2Ff6_4MIx-S23Wt2sdqVfq_zY",
@@ -148,9 +149,9 @@
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app)
+        const db = getFirestore(app)
 
-        // Mostrar e esconder form 
+        // Mostrar/esconder form
         let label = document.querySelectorAll('form label');
         let addVendaBtnNav = document.getElementById('adicionarVenda');
         let addVendaBtnForm = document.getElementById('submit');
@@ -159,10 +160,8 @@
             if (form.style.display === 'none') {
                 // Muda texto no menu de navegação
                 addVendaBtnNav.textContent = 'FECHAR'
-
                 // Mostra o form
                 form.style.display = 'flex';
-
             } else {  // Esconde o form
                 form.style.display = 'none'; 
                 addVendaBtnNav.textContent = 'ADICIONAR VENDA'
@@ -182,42 +181,61 @@
         })
 
         // Adicionar venda na db
-        let marcaMiniatura = document.getElementById('miniaturaForm');
-        let marcaCarro = document.getElementById('marcaCarroForm');
-        let qtdMinis = document.getElementById('qtdForm');
-        let custoPreco = document.getElementById('custoForm')
-        let vendaPreco = document.getElementById('vendaForm')
+        let marcaMiniatura = document.getElementById('miniaturaForm').value;
+        let marcaCarro = document.getElementById('marcaCarroForm').value;
+        let qtdMinis = document.getElementById('qtdForm').value;
+        let custoPreco = document.getElementById('custoForm').value;
+        let vendaPreco = document.getElementById('vendaForm').value;
 
         document.getElementById('submit').addEventListener('click', function(e) {
-            e.preventDefault();
-            set(ref(db, 'vendas/' + document.getElementById('miniaturaForm').value), {
-                marcaMiniatura: document.getElementById('miniaturaForm').value,
-                marcaCarro: document.getElementById('marcaCarroForm').value,
-                qtd: Number(document.getElementById('qtdForm').value),
-                custo: Number(document.getElementById('custoForm').value),
-                venda: Number(document.getElementById('vendaForm').value)
+            e.preventDefault()
+            addDoc(collection(db, "vendas"), {
+                marcaMiniatura: marcaMiniatura,
+                marcaCarro: marcaCarro,
+                qtd: Number(qtdMinis),
+                custo: Number(custoPreco),
+                venda: Number(vendaPreco) 
+                });
+        })
+
+        // Ler dados da db
+        getDocs(collection(db, 'vendas')).then(docSnap => {
+            let vendas = [];
+            docSnap.forEach((doc) => {
+                vendas.push( { ...doc.data(), id:doc.id})
             });
+            // Mostrar informaçoes nos cards
+            let somaCusto = 0, somaVendas = 0, somaQtd = 0;
+            let custoTotalCard = document.getElementById('custoTotal');
+            let vendaTotalCard = document.getElementById('vendaTotal');
+            let lucroTotalCard = document.getElementById('lucroTotal');
+            let vendidasTotalCard = document.getElementById('vendidasTotal');
+
+            // Soma dos custos
+            vendas.forEach(element => {
+                somaCusto += element.custo
+            });
+            custoTotalCard.innerText = 'R$ ' + somaCusto
+
+            // Soma das vendas
+            vendas.forEach(element => {
+                somaVendas += element.venda
+            });
+            vendaTotalCard.innerText = 'R$ ' + somaVendas
+
+            // Soma das quantidades
+            vendas.forEach(element => {
+                somaQtd += element.qtd
+            });
+            vendidasTotalCard.innerText = somaQtd
+
+            // Lucro
+            lucroTotalCard.innerText = 'R$ ' + (somaVendas - somaCusto)
         })
 
-        // Recuperar data
-        let custoTotal = document.getElementById('custoTotal');
-        let vendaTotal = document.getElementById('vendaTotal');
-        let vendidasTotal = document.getElementById('vendidasTotal');
-        let lucroTotal = document.getElementById('lucroTotal');
-        const dbRef = ref(db);
 
-        get(child(dbRef, 'vendas/' + marcaMiniatura.value)).then((snapshot) => {
-            if(snapshot.exists()) {         
-                vendidasTotal.innerText = snapshot.val().qtd;
-                custoTotal.innerText = 'R$ ' + snapshot.val().custo;
-                vendaTotal.innerText = 'R$ ' + snapshot.val().venda;
-                lucroTotal.innerText = 'R$ ' + (snapshot.val().venda - snapshot.val().custo);
-            } else {
-                alert("Erro ao recuperar valores da base de dados");
-            }
-        })
-        
     </script>
+
     <!-- Outros scripts -->
     <script src="script.js"></script>
 </body>
